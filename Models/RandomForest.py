@@ -8,9 +8,9 @@ from Validation.KFold import get_k_fold_accuracy
 def random_forest(data, labels):
     print("\nBegin Random Forest Classifier")
     training_data, test_data, training_labels, test_labels = train_test_split(data, labels, test_size=0.1)
-    model = RandomForestClassifier(n_estimators=30)  # using default
+    model = RandomForestClassifier(n_estimators=100, n_jobs=-1)  # using default
 
-    print("5-Fold accuracy:", get_k_fold_accuracy(model, 10, data, labels))
+    print("5-Fold accuracy:", get_k_fold_accuracy(model, 5, data, labels))
 
     # model.fit(data, labels)
     model.fit(training_data, training_labels)

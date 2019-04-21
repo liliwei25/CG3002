@@ -80,7 +80,19 @@ def import_data():
                     data_file = np.load("./Data/Training Data/" + file)
                     data.append((preprocess_data(data_file), mv.value))
                     # print(file, mv.name, mv.value)
-    np.save("data.npy", np.array(data))
+    for file in os.listdir("./Data/Training Data/No delay"):
+        if file.endswith(".npy"):
+            for mv in  Move:
+                if mv.name in file:
+                    data_file = np.load("./Data/Training Data/No delay/" + file)
+                    data.append((preprocess_data(data_file), mv.value))
+    # for file in os.listdir("./Data/Training Data/No delay/3"):
+    #     if file.endswith(".npy"):
+    #         for mv in  Move:
+    #             if mv.name in file:
+    #                 data_file = np.load("./Data/Training Data/No delay/3/" + file)
+    #                 data.append((sliding_window(data_file), mv.value))
+    # np.save("data.npy", np.array(data))
 
     # data = np.load('./training_data.npy')
 
